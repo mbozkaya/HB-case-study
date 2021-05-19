@@ -38,16 +38,6 @@ body {
     grid-template-columns: 20% 80%;
 }
 
-.sidebar {
-    display: flex;
-    flex-flow: column nowrap;
-    padding-top: 25px;
-}
-
-.sidebar-item {
-    margin: 25px;
-}
-
 .products {
     display: grid;
     padding-top: 25px;
@@ -133,6 +123,17 @@ body {
     border-radius: 4px;
 }
 
+.sidebar {
+    display: flex;
+    flex-flow: column nowrap;
+    padding-top: 25px;
+}
+
+.sidebar-item {
+    margin-bottom: 25px;
+}
+
+
 .sidebar-item-title {
     margin-bottom: 15px;
 }
@@ -142,12 +143,11 @@ body {
     font-size: 16px;
     line-height: 24px;
 }
-
-.sidebar-menu-item {
-    list-style: none;
+.sidebar-menu-item>ul{
+    padding: 0;
 }
-
-.sidebar-menu-item>li>ul {
+.sidebar-menu-item>ul>li {
+    list-style: none;
     margin: 2px;
 }
 
