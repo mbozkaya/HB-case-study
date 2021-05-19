@@ -3,42 +3,48 @@ import React from 'react';
 export default () => {
     return (
         <div className="sidebar">
-            <div className="tags">
-                <div className="tags-title">
-                    <h4 className="tags-title">Renk</h4>
+            <div className="sidebar-item">
+                <div className="sidebar-item-title">
+                    <span className="sidebar-item-text">Renk</span>
                 </div>
-                <li>
-                    <ul><a href="#">Label Text (4)</a></ul>
-                    <ul><a href="#">Lacivert (3)</a></ul>
-                    <ul><a href="#">Sarı (1)</a></ul>
-                    <ul><a href="#">Siyah (5)</a></ul>
-                    <ul><a href="#">Beyaz (2)</a></ul>
-                </li>
+                <div className="sidebar-menu-item">
+                    <li>
+                        <ul><a className="sidebar-menu-items" href="#">Label Text (4)</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">Lacivert (3)</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">Sarı (1)</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">Siyah (5)</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">Beyaz (2)</a></ul>
+                    </li>
+                </div>
             </div>
-            <div className="order">
-                <div className="order-title">
-                    <h4 className="tags-title">Sıralama</h4>
+            <div className="sidebar-item">
+                <div className="sidebar-item-title">
+                    <span className="sidebar-item-text">Sıralama</span>
                 </div>
-                <li>
-                    <ul><a href="#">En Düşük Fiyat</a></ul>
-                    <ul><a href="#">En Yüksek Fiyat</a></ul>
-                    <ul><a href="#">En Yeniler (A{'>'}Z)</a></ul>
-                    <ul><a href="#">En Yeniler (Z{'>'}A)</a></ul>
-                </li>
+                <div className="sidebar-menu-item">
+                    <li>
+                        <ul><a className="sidebar-menu-items" href="#">En Düşük Fiyat</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">En Yüksek Fiyat</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">En Yeniler (A{'>'}Z)</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">En Yeniler (Z{'>'}A)</a></ul>
+                    </li>
+                </div>
             </div>
-            <div className="brand">
-                <div className="brand-title">
-                    <h4 className="tags-title">Marka</h4>
+            <div className="sidebar-item">
+                <div className="sidebar-item-title">
+                    <span className="sidebar-item-text">Marka</span>
                 </div>
-                <li>
-                    <ul><a href="#">Samsung (4)</a></ul>
-                    <ul><a href="#">Nokia (6)</a></ul>
-                    <ul><a href="#">Apple (3)</a></ul>
-                    <ul><a href="#">LG (2)</a></ul>
-                    <ul><a href="#">Huawei (6)</a></ul>
-                    <ul><a href="#">Xiaomi (9)</a></ul>
-                    <ul><a href="#">General Mobile (1)</a></ul>
-                </li>
+                <div className="sidebar-menu-item">
+                    <li>
+                        <ul><a className="sidebar-menu-items" href="#">Samsung (4)</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">Nokia (6)</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">Apple (3)</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">LG (2)</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">Huawei (6)</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">Xiaomi (9)</a></ul>
+                        <ul><a className="sidebar-menu-items" href="#">General Mobile (1)</a></ul>
+                    </li>
+                </div>
             </div>
         </div>
 

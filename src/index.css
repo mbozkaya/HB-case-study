@@ -25,10 +25,11 @@ body {
 }
 
 .subheader {
-    padding: 0px 80px 0px 80px;
+    padding: 16px 80px 0px 80px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    height: 52px;
 }
 
 .main {
@@ -40,11 +41,16 @@ body {
 .sidebar {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-around;
+    padding-top: 25px;
+}
+
+.sidebar-item {
+    margin: 25px;
 }
 
 .products {
     display: grid;
+    padding-top: 25px;
 }
 
 .product-row {
@@ -98,4 +104,61 @@ body {
     position: absolute;
     top: -8px;
     right: -8px;
+}
+
+.page-title-container {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.page-title {
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 100%;
+    color: #484848;
+}
+
+.page-subtitle {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 100%;
+}
+
+.selectbox {
+    width: 120px;
+    height: 48px;
+    outline: 0;
+    border: 1px solid #B4B4BB;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.sidebar-item-title {
+    margin-bottom: 15px;
+}
+
+.sidebar-item-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.sidebar-menu-item {
+    list-style: none;
+}
+
+.sidebar-menu-item>li>ul {
+    margin: 2px;
+}
+
+.sidebar-menu-items {
+    font-size: 14px;
+    line-height: 24px;
+    text-decoration: none;
+    font-weight: 400;
+    color: #484848;
+}
+
+.sidebar-menu-items:hover {
+    color: #FF6000;
 }
