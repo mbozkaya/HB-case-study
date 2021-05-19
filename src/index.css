@@ -46,6 +46,8 @@ body {
 .product-row {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
+    margin-bottom: 12px;
+    height: 472px;
 }
 
 .search {
@@ -126,7 +128,7 @@ body {
 .sidebar {
     display: flex;
     flex-flow: column nowrap;
-    padding-top: 25px;
+    padding-top: 45px;
 }
 
 .sidebar-item {
