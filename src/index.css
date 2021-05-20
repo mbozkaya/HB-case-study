@@ -47,7 +47,112 @@ body {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     margin-bottom: 12px;
-    height: 472px;
+    gap: 14px;
+}
+
+.product-image-container {
+    text-align: center;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.product-filters, .product-title {
+    font-size: 12px;
+    line-height: 18px;
+    color: #484848;
+}
+
+.product-price {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.product-header-container {
+    padding: 16px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+}
+
+.product-title-container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2px;
+}
+
+.product-price-container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 2px;
+}
+
+.product-net-price {
+    font-size: 13px;
+    line-height: 18px;
+    text-decoration-line: line-through;
+    color: #9B9B9B;
+    padding-right: 5px;
+}
+
+.product-discount {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    color: #F90000;
+}
+
+.product:hover {
+    cursor: pointer;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+}
+
+.product:hover>.product-cart-container {
+    padding: 16px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: space-around;
+}
+
+.product:hover>.product-header-container {
+    display: none;
+}
+
+.product:hover>.product-image-container {
+    border: none;
+}
+
+.product-cart-container {
+    display: none;
+}
+
+.add-cart-button-disabled {
+    background: rgba(126, 126, 126, 0.11);
+    border-radius: 8px;
+    height: 32px;
+    text-align: center;
+    border: none;
+    color: #B0B0B0;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.add-cart-button {
+    background: rgba(255, 96, 0, 0.11);
+    border-radius: 8px;
+    height: 32px;
+    text-align: center;
+    color: #FF6000;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.add-cart-button:hover {
+    cursor: pointer;
+    transform: scale(1.01);
 }
 
 .search {
@@ -135,7 +240,6 @@ body {
     margin-bottom: 25px;
 }
 
-
 .sidebar-item-title {
     margin-bottom: 15px;
 }
@@ -145,9 +249,11 @@ body {
     font-size: 16px;
     line-height: 24px;
 }
-.sidebar-menu-item>ul{
+
+.sidebar-menu-item>ul {
     padding: 0;
 }
+
 .sidebar-menu-item>ul>li {
     list-style: none;
     margin: 2px;

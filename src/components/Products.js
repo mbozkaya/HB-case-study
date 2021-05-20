@@ -105,14 +105,31 @@ export default () => {
                                         <div className="product-image-container">
                                             <img src={product.img} />
                                         </div>
-                                        <div className="product-filters">
-                                            <span>{product['product-filter']}</span>
+                                        <div className="product-header-container">
+                                            <div className="product-filters">
+                                                <span>{product['product-filter']}</span>
+                                            </div>
+                                            <div className="product-title-container">
+                                                <span className="product-title"> <b>Marka:</b> {product.brand}</span>
+                                                <span className="product-title"><b>Renk:</b> {product.color}</span>
+                                            </div>
+                                            <div className="product-price-container">
+                                                <span className="product-price">{product.price.toLocaleString()} TL</span>
+                                                <div className="product-discount-container">
+                                                    <span className="product-net-price">{product.netPrice.toLocaleString()} TL</span>
+                                                    <span className="product-discount">{product.discount}%</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <h5 className="produc-title">Marka: {product.brand}
-                                        Renk: {product.color}</h5>
-                                        <span className="product-price">{product.price.toLocaleString()} TL</span>
-                                        <span className="product-net-price">{product.netPrice.toLocaleString()} TL</span>
-                                        <span className="product-discount">{product.discount}%</span>
+                                        <div className="product-cart-container">
+                                            <div className="product-filters">
+                                                <span>{product['product-filter']}</span>
+                                            </div>
+                                            {
+                                                true ? (<button className="add-cart-button" type="button">Sepete Ekle</button>) : (<button className="add-cart-button-disabled" type="button">Bu ürünü sepete ekleyemezsiniz.</button>)
+                                            }
+
+                                        </div>
                                     </div>
                                 ))
                             }
