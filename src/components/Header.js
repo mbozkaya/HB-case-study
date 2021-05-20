@@ -1,4 +1,5 @@
 import React from 'react';
+import Basket from './Basket';
 
 const Header = () => {
 
@@ -15,12 +16,7 @@ const Header = () => {
                     <input className="search-input" type="text" placeholder="25 milyon’dan fazla ürün içerisinde ara" />
                 </div>
             </form>
-            <div className="basket">
-                <span className="basket-circle">Sepetim</span>
-                <div className="basket-count">
-                    1
-                </div>
-            </div>
+            <Basket />
         </div>
 
     );
