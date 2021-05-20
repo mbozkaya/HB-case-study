@@ -1,4 +1,6 @@
 import React from 'react';
+import helper from '../util/helper';
+import Pagination from './Pagination';
 
 export default () => {
 
@@ -86,17 +88,11 @@ export default () => {
             discount: 12,
         },
     ];
-    const createArrayFromLength = (len) => {
-        const arr = [];
-        for (let index = 0; index < len; index++) {
-            arr.push(index);
-        }
-        return arr;
-    };
+
     return (
         <div className="products">
             {
-                createArrayFromLength(products.length / 4)
+                helper.createArrayFromLength(products.length / 4)
                     .map((len) => (
                         <div className="product-row" key={`${len}product`}>
                             {
@@ -136,7 +132,7 @@ export default () => {
                         </div>
                     ))
             }
+            <Pagination count={80} />
         </div>
-
     );
 };
