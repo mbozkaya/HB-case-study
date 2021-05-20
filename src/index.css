@@ -307,3 +307,7 @@ body {
 .pagination-item-end{
     margin-left: 3px;
 }
+
+.pagination-current-page{
+    border: 1px solid #001aff;
+}
