@@ -1,21 +1,55 @@
 import React from 'react';
+import { Context } from '../context/AppContext';
+import helper from '../util/helper';
+
+const SearchedKey = (prop) => {
+    const { searchKey } = prop;
+    return (
+        <span>Aranan Kelime: <b>{searchKey}</b></span>
+    );
+};
+
+const Options = (prop) => {
+    const { currentValue } = prop;
+
+    return (
+        <>
+            {
+                Object.values(helper.orderTypes).map((orderType) => (
+                    <option
+                        className={`selectbox-option ${currentValue === orderType && 'selectbox-option-selected'}`}
+                        key={orderType}
+                        value={orderType}
+                    >
+                        {helper.orderTypeName[orderType]}
+                    </option>
+                ))
+            }
+        </>
+    )
+}
 
 export default () => {
     return (
-        <div className="subheader">
-            <div className="page-title-container">
-                <label className="page-title">iPhone iOS cep telefonu</label>
-                <label className="page-subtitle">Aranan Kelime: <b>iphone 11</b></label>
-            </div>
-            {/* <div className="selectbox">
-                <img src="images\\dropdown-icon.png" />
-                <select>
-                    <option value=""></option>
-                </select>
-            </div> */}
-            <select className="selectbox" placeholder="Sıralama">
-                <option value=""></option>
-            </select>
-        </div>
+        <Context.Consumer>
+            {
+                ({ filter, searchKey, order, orderBy }) => (
+                    <div className="subheader">
+                        <div className="page-title-container">
+                            <label className="page-title">
+                                {filter.brand && `${filter.brand} cep telefonu` || ""}
+                            </label>
+                            <label className="page-subtitle">
+                                {searchKey && <SearchedKey searchKey={searchKey} />}
+                            </label>
+                        </div>
+                        <select className="selectbox" value={order} onChange={(e) => { orderBy(Number.parseInt(e.target.value)) }}>
+                            <option defaultValue={orderBy === 0} hidden >Sıralama</option>
+                            <Options currentValue={order} />
+                        </select>
+                    </div>
+                )
+            }
+        </Context.Consumer>
     );
 };
