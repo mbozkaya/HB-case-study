@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Context } from '../context/AppContext';
+import helper from '../util/helper';
 import Modal from './Modal';
 
 export default () => {
@@ -26,7 +27,7 @@ export default () => {
                                             basket.length === 0 && <span className="quick-basket-empty">Sepetinizde hiç ürün yok.</span>
                                         }
                                         {
-                                            basket.map(item => (
+                                            basket.length > 0 && helper.orderBy(basket, 'basketDate', 'desc').map(item => (
                                                 <div className="quick-basket-item" key={item.id}>
                                                     <img className="quick-basket-image" src={item.img} />
                                                     <div className="quick-basket-info">
