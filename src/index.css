@@ -193,6 +193,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: pointer;
 }
 
 .basket-count {
@@ -205,6 +206,81 @@ body {
     position: absolute;
     top: -8px;
     right: -8px;
+}
+
+.quick-basket {
+    position: absolute;
+    border: 1px solid #B0B0B0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-right: 80px;
+    right: 0px;
+    background: #FFFFFF;
+    width: 360px;
+    min-height: 120px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+    margin-top: -4px;
+    border-top-right-radius: 0px;
+}
+.quick-basket::before {
+  background-color: white;
+  content: "";
+  display: block;
+  height: 1px;
+  position: absolute;
+  width: 119px;
+}
+.quick-basket::before {
+  top: -1px;
+  left: 239px;
+}
+
+.quick-basket-item {
+    height: 72px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    gap: 10px;
+}
+
+.quick-basket-image {
+    height: 60px;
+    width: 50px;
+    padding: 2px;
+}
+
+.quick-basket-info {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
+    padding-left: 3px;
+}
+
+.quick-basket-title {
+    font-size: 12px;
+    line-height: 18px;
+    color: #484848;
+    text-align: left;
+}
+
+.quick-basket-remove {
+    background: #FFFFFF;
+    border: 1px solid #F90000;
+    border-radius: 4px;
+    height: 18px;
+    width: 49px;
+    color: #F90000;
+    outline: 0;
+    cursor: pointer;
+}
+
+.quick-basket-remove:hover {
+    background-color: #F90000;
+    color: #FFFFFF;
 }
 
 .page-title-container {
@@ -247,6 +323,7 @@ body {
 .selectbox-option-selected:hover {
     background-color: #FF6000;
 }
+
 .sidebar {
     display: flex;
     flex-flow: column nowrap;
