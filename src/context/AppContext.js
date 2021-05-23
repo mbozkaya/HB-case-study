@@ -6,7 +6,7 @@ const Context = createContext();
 const ContextProvider = (props) => {
     const { children } = props;
     const [appData, setAppData] = useState({
-        data: helper.generateProduct(),
+        data: helper.staticProducts(),
     });
     const [basket, setBasket] = useState(helper.getStoredBasket().items);
     const [paging, setPaging] = useState({
@@ -22,6 +22,7 @@ const ContextProvider = (props) => {
     const addBasket = (item) => {
         const storedBasket = helper.getStoredBasket();
         if (!storedBasket.items.some(store => store.id === item.id)) {
+            item.basketDate = new Date();
             storedBasket.items.push(item);
             localStorage.setItem('basket', JSON.stringify(storedBasket));
             setBasket(storedBasket.items);
@@ -45,17 +46,12 @@ const ContextProvider = (props) => {
     };
 
     const filterProduct = (key, value) => {
-        const data = [...appData.data];
-        setFilteredProducts(data.filter(f => f[key] === value));
         const newFilter = { ...filter };
         newFilter[key] = value;
         setFilter(newFilter);
-        setOrder(0);
     };
 
     const search = (key) => {
-        const data = [...appData.data];
-        setFilteredProducts(data.filter(s => s.title.toLocaleLowerCase().includes(key.toLocaleLowerCase())))
         setSearchKey(key);
     };
 
@@ -67,26 +63,6 @@ const ContextProvider = (props) => {
     };
 
     const orderBy = (orderType) => {
-        let orderedProduct = [];
-        switch (orderType) {
-            case helper.orderTypes.lowestPrice:
-                orderedProduct = helper.orderBy(appData.data, 'netPrice');
-                break;
-            case helper.orderTypes.highestPrice:
-                orderedProduct = helper.orderBy(appData.data, 'netPrice', 'desc');
-                break;
-            case helper.orderTypes.newest:
-                orderedProduct = helper.orderBy(appData.data, 'createdDate');
-                break;
-            case helper.orderTypes.oldest:
-                orderedProduct = helper.orderBy(appData.data, 'createdDate', 'desc');
-                break;
-            default:
-                orderedProduct = helper.orderBy(appData.data, 'netPrice');
-                break;
-        }
-
-        setFilteredProducts(orderedProduct);
         setOrder(orderType);
     };
 
@@ -95,14 +71,44 @@ const ContextProvider = (props) => {
         const itemsPerPage = 12;
         const start = itemsPerPage * (currentPage - 1);
         const end = start + itemsPerPage;
-        const newProdcuts = filteredProducts.slice(start, end);
+
+        let newFilteredData = [...appData.data];
+        if (searchKey && searchKey.length > 1) {
+            newFilteredData = newFilteredData.filter(s => s.title.toLocaleLowerCase().includes(searchKey.toLocaleLowerCase()));
+        } else {
+            Object.keys(filter).forEach(key => {
+                newFilteredData = newFilteredData.filter(f => f[key] === filter[key]);
+            });
+        }
+
+
+        switch (order) {
+            case helper.orderTypes.lowestPrice:
+                newFilteredData = helper.orderBy(newFilteredData, 'netPrice');
+                break;
+            case helper.orderTypes.highestPrice:
+                newFilteredData = helper.orderBy(newFilteredData, 'netPrice', 'desc');
+                break;
+            case helper.orderTypes.newest:
+                newFilteredData = helper.orderBy(newFilteredData, 'createdDate');
+                break;
+            case helper.orderTypes.oldest:
+                newFilteredData = helper.orderBy(newFilteredData, 'createdDate', 'desc');
+                break;
+            default:
+                newFilteredData = helper.orderBy(newFilteredData, 'netPrice');
+                break;
+        }
+
+        const newProdcuts = newFilteredData.slice(start, end);
+        setFilteredProducts([...newFilteredData]);
         setProducts(newProdcuts);
     }
 
 
     useEffect(() => {
         getProducts();
-    }, [paging.currentPage, order, filter]);
+    }, [paging.currentPage, order, filter, searchKey]);
 
     useLayoutEffect(() => {
         window.clearState = () => clear();
