@@ -22,10 +22,12 @@ describe('Context should ', () => {
                             <button type="button" onClick={() => { con.filterProduct('color', 'Sarı') }} id="changeFilter"></button>
                             <button type="button" onClick={() => { con.orderBy(helper.orderTypes.highestPrice) }} id="changeOrder"></button>
                             <button type="button" onClick={() => { con.search('apple') }} id="changeSearch"></button>
+                            <button type="button" onClick={() => { con.addBasket(con.filteredProducts[0]) }} id="addBasket"></button>
                             <span id="currentPage">{con.currentPage}</span>
                             <span id="filter">{con.filter.color || ''}</span>
                             <span id="order">{(con.order && helper.orderTypeName[con.order]) || ''}</span>
                             <span id="search">{con.searchKey || ''}</span>
+                            <span id="basket">{con.basket.length || ''}</span>
                         </>
                     )
                 }
@@ -86,6 +88,15 @@ describe('Context should ', () => {
         const expectedKey = 'apple';
 
         expect(wrapper.find('#search').text()).toEqual(expectedKey);
-    })
+    });
+
+    it('validate add basket', () => {
+        const wrapper = getWrapper();
+
+        wrapper.find('#addBasket').simulate('click');
+        const expectedKey = 1;
+
+        expect(wrapper.find('#basket').text()).toEqual(`${expectedKey}`);
+    });
 
 });

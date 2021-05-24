@@ -17,6 +17,7 @@ const ContextProvider = (props) => {
     const [searchKey, setSearchKey] = useState('');
     const [order, setOrder] = useState(0);
     const [filteredProducts, setFilteredProducts] = useState([...appData.data]);
+    const [fixedOrderProducts, setFixedOrderProducts] = useState(helper.orderBy([...appData.data], 'id'));
 
 
     const addBasket = (item) => {
@@ -60,6 +61,10 @@ const ContextProvider = (props) => {
         setFilter({});
         setSearchKey('');
         setOrder(0);
+        setPaging({
+            ...paging,
+            currentPage: 1,
+        });
     };
 
     const orderBy = (orderType) => {
@@ -67,10 +72,6 @@ const ContextProvider = (props) => {
     };
 
     const getProducts = () => {
-        const { currentPage } = paging;
-        const itemsPerPage = 12;
-        const start = itemsPerPage * (currentPage - 1);
-        const end = start + itemsPerPage;
 
         let newFilteredData = [...appData.data];
         if (searchKey && searchKey.length > 1) {
@@ -100,9 +101,21 @@ const ContextProvider = (props) => {
                 break;
         }
 
+        const { currentPage } = paging;
+        const itemsPerPage = 12;
+        if (currentPage > Math.ceil(newFilteredData.length / 12)) {
+            setPaging({
+                ...paging,
+                currentPage:Math.ceil(newFilteredData.length / 12),
+            });
+        }
+        const start = itemsPerPage * (currentPage - 1);
+        const end = start + itemsPerPage;
+
         const newProdcuts = newFilteredData.slice(start, end);
         setFilteredProducts([...newFilteredData]);
         setProducts(newProdcuts);
+        setFixedOrderProducts(helper.orderBy([...newFilteredData], 'id'));
     }
 
 
@@ -132,7 +145,8 @@ const ContextProvider = (props) => {
                 filter,
                 searchKey,
                 order,
-                orderBy
+                orderBy,
+                fixedOrderProducts
             }
         }>
             {

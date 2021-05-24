@@ -44,6 +44,10 @@ body {
     padding-top: 25px;
 }
 
+.product {
+    min-height: 490px;
+}
+
 .product-row {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;

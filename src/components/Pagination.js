@@ -20,7 +20,7 @@ export default () => {
                                 ))
                             }
                             <div className="pagination-item pagination-item-end" onClick={() => {
-                                const maxPageCount = filteredProducts.length / 12;
+                                const maxPageCount = Math.ceil(filteredProducts.length / 12);
                                 currentPage + 1 > maxPageCount ? changePage(maxPageCount) : changePage(currentPage + 1);
                             }}>
                                 <span className="pagination-text">{'>'}</span>

@@ -44,4 +44,16 @@ describe('Basket should be', () => {
         const basketCount = wrapper.find('.basket-count');
         expect(basketCount.text()).toEqual(`${basket.length}`);
     });
+
+    it('modal open when remove item from basket', () => {
+        const wrapper = renderBasket();
+        const basket = wrapper.find('.basket');
+        expect(wrapper.find('.modal-open').length).toBe(0);
+
+
+        basket.simulate('click');
+        wrapper.find('.quick-basket-remove').simulate('click');
+
+        expect(wrapper.find('.modal-open').length).toBe(1);
+    })
 });

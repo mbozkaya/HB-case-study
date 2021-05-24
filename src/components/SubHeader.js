@@ -29,7 +29,7 @@ const Options = (prop) => {
     )
 }
 
-export default () => {
+const SubHeader = () => {
     return (
         <Context.Consumer>
             {
@@ -53,3 +53,5 @@ export default () => {
         </Context.Consumer>
     );
 };
+
+export { SubHeader, SearchedKey, Options };

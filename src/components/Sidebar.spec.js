@@ -5,7 +5,7 @@ import helper from '../util/helper';
 import Sidebar from './Sidebar';
 
 describe('Sidebar should ', () => {
-    const filteredProducts = helper.generateProduct();
+    const fixedOrderProducts = helper.generateProduct();
     const clear = jest.fn();
     const orderBy = jest.fn();
     const filterProduct = jest.fn();
@@ -18,7 +18,7 @@ describe('Sidebar should ', () => {
         };
         const wrapper = mount(
             <Context.Provider value={{
-                filterProduct, filter, orderBy, order, filteredProducts, clear
+                filterProduct, filter, orderBy, order, fixedOrderProducts, clear
             }}>
                 <Sidebar />
             </Context.Provider>
@@ -26,7 +26,7 @@ describe('Sidebar should ', () => {
 
         const selectedItem = wrapper.find('.sidebar-menu-item-selected');
 
-        const filterItemCount = filteredProducts.filter(f => f.color === filter.color).length;
+        const filterItemCount = fixedOrderProducts.filter(f => f.color === filter.color).length;
 
         expect(selectedItem.length).toBe(1);
         expect(selectedItem.text()).toEqual(`${filter.color} (${filterItemCount})`);
@@ -39,7 +39,7 @@ describe('Sidebar should ', () => {
         };
         const wrapper = mount(
             <Context.Provider value={{
-                filterProduct, filter, orderBy, order, filteredProducts, clear
+                filterProduct, filter, orderBy, order, fixedOrderProducts, clear
             }}>
                 <Sidebar />
             </Context.Provider>
@@ -47,7 +47,7 @@ describe('Sidebar should ', () => {
 
         const selectedItem = wrapper.find('.sidebar-menu-item-selected');
 
-        const filterItemCount = filteredProducts.filter(f => f.brand === filter.brand).length;
+        const filterItemCount = fixedOrderProducts.filter(f => f.brand === filter.brand).length;
 
         expect(selectedItem.length).toBe(1);
         expect(selectedItem.text()).toEqual(`${filter.brand} (${filterItemCount})`);
@@ -59,7 +59,7 @@ describe('Sidebar should ', () => {
         order = helper.orderTypes.lowestPrice;
         const wrapper = mount(
             <Context.Provider value={{
-                filterProduct, filter, orderBy, order, filteredProducts, clear
+                filterProduct, filter, orderBy, order, fixedOrderProducts, clear
             }}>
                 <Sidebar />
             </Context.Provider>
@@ -71,7 +71,7 @@ describe('Sidebar should ', () => {
     it('be order when click order span', () => {
         const wrapper = mount(
             <Context.Provider value={{
-                filterProduct, filter, orderBy, order, filteredProducts, clear
+                filterProduct, filter, orderBy, order, fixedOrderProducts, clear
             }}>
                 <Sidebar />
             </Context.Provider>
@@ -85,7 +85,7 @@ describe('Sidebar should ', () => {
     it('should be filter when click filter item', () => {
         const wrapper = mount(
             <Context.Provider value={{
-                filterProduct, filter, orderBy, order, filteredProducts, clear
+                filterProduct, filter, orderBy, order, fixedOrderProducts, clear
             }}>
                 <Sidebar />
             </Context.Provider>
