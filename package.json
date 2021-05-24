@@ -14,7 +14,9 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "test:cover": "yarn test --coverage"
+    "test:cover": "yarn test --coverage",
+    "docker": "docker build -t react-docker .",
+    "react-docker": "docker run -p 3000:80 react-docker"
   },
   "author": "",
   "license": "ISC",
